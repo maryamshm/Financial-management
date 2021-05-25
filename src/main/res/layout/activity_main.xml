@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    android:paddingTop="120dp"
+    android:background="@drawable/sliderbg"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="286dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="55dp"
+        android:src="@drawable/Vector" />
+    <Button
+        android:textColor="@color/white"
+        android:textSize="27sp"
+        android:id="@+id/BtnLogin"
+        android:layout_marginBottom="35dp"
+        android:layout_width="255dp"
+        android:fontFamily="@font/kalameh_bold"
+        android:background="@drawable/button_style"
+        android:layout_height="50dp"
+        android:text="ورود"
+        />
+    <Button
+        android:id="@+id/BtnSingin"
+        android:textColor="@color/white"
+        android:textSize="27sp"
+        android:layout_width="255dp"
+        android:fontFamily="@font/kalameh_bold"
+        android:background="@drawable/button_style"
+        android:layout_height="50dp"
+        android:text="ثبت نام"
+        />
+</LinearLayout>
