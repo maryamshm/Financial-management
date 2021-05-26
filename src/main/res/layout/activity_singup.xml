@@ -96,13 +96,14 @@
             android:layout_height="match_parent"
             tools:ignore="InvalidId" />
     </LinearLayout>
+
     <Button
-        android:textColor="@color/white"
-        android:textSize="23sp"
+        android:id="@+id/BtnSign"
         android:layout_width="222dp"
-        android:fontFamily="@font/kalameh_bold"
-        android:background="@drawable/button_style"
         android:layout_height="50dp"
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/kalameh_bold"
         android:text="ثبت نام"
-        />
+        android:textColor="@color/white"
+        android:textSize="23sp" />
 </LinearLayout>

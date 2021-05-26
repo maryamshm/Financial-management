@@ -14,20 +14,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.items_intro);
+        setContentView(R.layout.activity_main);
         init();
-//        BtnSingin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,SingupActivity.class));
-//            }
-//        });
-//        BtnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-//            }
-//        });
+        BtnSingin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,SingupActivity.class));
+            }
+        });
+        BtnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            }
+        });
     }
 
     private void init() {
