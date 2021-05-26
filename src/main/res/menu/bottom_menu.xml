@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item0"
+        android:title="خانه"
+        android:icon="@drawable/ic_home"
+        tools:ignore="DuplicateIds" />
+    <item
+        android:id="@+id/item0"
+        android:title="خانه"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/item0"
+        android:title="خانه"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/item0"
+        android:title="خانه"
+        android:icon="@drawable/ic_home"/>
+</menu>

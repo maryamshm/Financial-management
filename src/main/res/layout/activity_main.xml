@@ -15,7 +15,7 @@
         android:layout_width="286dp"
         android:layout_height="300dp"
         android:layout_marginBottom="55dp"
-        android:src="@drawable/Vector" />
+        android:src="@drawable/vector" />
     <Button
         android:textColor="@color/white"
         android:textSize="27sp"

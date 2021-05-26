@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "590267991460",
+    "project_id": "financial-dd383",
+    "storage_bucket": "financial-dd383.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590267991460:android:7ee1980a5d1ba34e482d31",
+        "android_client_info": {
+          "package_name": "ir.maryamsh.financialmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590267991460-n652i27hs9i8me6qabmttbj2uu3541ln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMjogUOdqTeorPfxZCmNAsSLVNJkHpR_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590267991460-n652i27hs9i8me6qabmttbj2uu3541ln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

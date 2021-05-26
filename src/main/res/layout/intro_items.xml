@@ -18,26 +18,27 @@
        />
       <RelativeLayout
           android:id="@+id/LyDot"
-          android:paddingTop="190dp"
           android:layout_width="match_parent"
           android:background="@drawable/intro1"
           android:layout_alignParentBottom="true"
-          android:layout_height="310dp">
+          android:layout_height="@dimen/_210sdp">
           <TextView
               android:layout_centerHorizontal="true"
               android:textColor="#fff"
               android:layout_width="362dp"
               android:layout_height="wrap_content"
               android:id="@+id/DesIntro"
+             android:layout_marginTop="@dimen/_84sdp"
               android:lineSpacingExtra="8sp"
               android:textAlignment="center"
               android:text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه  "
               android:textSize="15sp"
-              />
+              tools:ignore="NotSibling" />
               <LinearLayout
                   android:gravity="center"
                   android:layout_width="match_parent"
                   android:layout_height="50dp"
+                  android:id="@+id/lybo"
                   android:layout_alignParentBottom="true"
                   android:orientation="horizontal">
                   <Button
@@ -59,12 +60,9 @@
 
     <ImageView
         android:id="@+id/ImgIntro"
-        android:layout_width="242dp"
-        android:layout_height="499dp"
+        android:layout_width="@dimen/_212sdp"
+        android:layout_height="@dimen/_399sdp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="33dp"
-        android:layout_marginRight="9dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerInside"
+        android:layout_marginTop="@dimen/_33sdp"
         android:src="@drawable/img_intro1" />
 </RelativeLayout>
