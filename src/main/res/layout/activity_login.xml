@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     android:orientation="vertical"
     android:layoutDirection="ltr"
-    android:paddingTop="120dp"
     android:background="@drawable/sliderbg"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">

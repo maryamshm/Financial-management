@@ -1,40 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:layoutDirection="ltr"
-
-    android:background="@drawable/sliderbg"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="#EEEEEE"
     tools:context=".MainActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/framelayout"
+        android:layout_above="@id/bottomBar">
 
-    <ImageView
-        android:layout_width="286dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="55dp"
-        android:src="@drawable/vector" />
-    <Button
-        android:textColor="@color/white"
-        android:textSize="27sp"
-        android:id="@+id/BtnLogin"
-        android:layout_marginBottom="35dp"
-        android:layout_width="215dp"
-        android:fontFamily="@font/kalameh_bold"
-        android:background="@drawable/button_style"
-        android:layout_height="50dp"
-        android:text="ورود"
+    </FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="center"
+        android:background="@drawable/navigation_bg"
+        app:iconSize="20dp"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_menu"
         />
-    <Button
-        android:id="@+id/BtnSingin"
-        android:textColor="@color/white"
-        android:textSize="27sp"
-        android:layout_width="215dp"
-        android:fontFamily="@font/kalameh_bold"
-        android:background="@drawable/button_style"
-        android:layout_height="50dp"
-        android:text="ثبت نام"
-        />
-</LinearLayout>
+</RelativeLayout>
