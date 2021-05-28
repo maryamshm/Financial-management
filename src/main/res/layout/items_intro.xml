@@ -57,8 +57,8 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <Button
-                android:layout_width="9dp"
-                android:layout_height="9dp"
+                android:layout_width="3dp"
+                android:layout_height="3dp"
                 android:background="@drawable/radius" />
 
             <Button

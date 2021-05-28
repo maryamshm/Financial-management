@@ -2,10 +2,77 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="#EEEEEE"
+    android:orientation="vertical"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="add"/>
+    <include
+        layout="@layout/toolbar"
+        android:layout_alignParentTop="true"
+         android:layout_width="match_parent"
+        android:layout_height="130sp"
+        />
+     <LinearLayout
+         android:layout_width="@dimen/_215sdp"
+         android:gravity="center"
+         android:padding="8dp"
+         android:id="@+id/form"
+         android:orientation="vertical"
+         android:layout_height="wrap_content"
+         android:layout_centerInParent="true"
+         android:background="@drawable/formtbg">
+         <EditText
+             android:layout_width="match_parent"
+             android:hint="مبلغ"
+             android:padding="12dp"
+             android:id="@+id/txtprice"
+             android:layout_marginTop="@dimen/_12sdp"
+             android:textColorHint="#5B5B5B"
+             android:fontFamily="@font/kalameh_regular"
+             android:textSize="18sp"
+             android:textDirection="rtl"
+             android:layout_height="wrap_content"/>
+         <Spinner
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/spinnertype"
+             android:layout_marginBottom="@dimen/_12sdp"
+             android:layout_marginTop="@dimen/_12sdp"
+             android:spinnerMode="dropdown"
+             />
+         <EditText
+             android:layout_width="match_parent"
+             android:hint="توضیحات"
+             android:padding="12dp"
+             android:id="@+id/txtdes"
+             android:textColorHint="#5B5B5B"
+             android:fontFamily="@font/kalameh_regular"
+             android:textSize="18sp"
+             android:textDirection="rtl"
+             android:layout_marginBottom="@dimen/_12sdp"
+             android:layout_height="wrap_content"/>
+     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="203dp"
+        android:layout_height="53dp"
+        android:layout_alignBottom="@id/form"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/add_data"
+        android:layout_marginTop="@dimen/_55sdp"
+        android:layout_marginBottom="-125dp"
+        android:background="@drawable/button_style">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="اضافه کردن"
+            android:textColor="#fff"
+            android:textSize="22sp"
+            android:fontFamily="@font/kalameh_bold"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            android:src="@drawable/plus" />
+    </RelativeLayout>
 </RelativeLayout>

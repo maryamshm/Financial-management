@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,11 +21,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText TxtEmail;
     EditText TxtPass;
     FirebaseAuth auth;
+    SharedPreferences shPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ini();
+        shPref = getSharedPreferences("shPref", MODE_PRIVATE);
         auth=FirebaseAuth.getInstance();
         BtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
                    @Override
                    public void onComplete(@NonNull  Task<AuthResult> task) {
                        if(task.isSuccessful()){
+                           SharedPreferences.Editor editor = shPref.edit();
+                           editor.putString("email",email);
+                           editor.commit();
                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                        }
                        else{
@@ -45,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
     private void ini() {
        BtnLogin=findViewById(R.id.ButtonLoginin);
        TxtEmail=findViewById(R.id.TxtEmaillogin);

@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
         init();
         navigation.setOnNavigationItemSelectedListener(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new home_fragment(MainActivity.this)).commit();
     }
 
     private void init() {
@@ -29,10 +30,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(MenuItem item) {
          switch (item.getItemId()){
              case R.id.home_item:
-                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new home_fragment()).commit();
+                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new home_fragment(MainActivity.this)).commit();
                  break;
              case R.id.add_item:
-                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new add_fragment()).commit();
+                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new add_fragment(MainActivity.this)).commit();
                  break;
              case R.id.report_item:
                  getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new report_fragment()).commit();

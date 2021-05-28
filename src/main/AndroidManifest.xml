@@ -12,10 +12,7 @@
         android:theme="@style/Theme.Financialmanagement">
         <activity android:name=".MainActivity"
             tools:ignore="Instantiatable">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".SingupActivity"
             tools:ignore="Instantiatable" />
@@ -25,7 +22,10 @@
 
         </activity>
         <activity android:name=".AccountActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

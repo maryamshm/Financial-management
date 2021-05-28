@@ -40,7 +40,6 @@ public class SingupActivity extends AppCompatActivity {
                 String Pass=TxtPass.getText().toString().trim();
                 String Name=TXTName.getText().toString().trim();
                 Users users=new Users(Name,Pass,Email);
-                if(validdata(Name,Email,Pass)){
                     auth.createUserWithEmailAndPassword(Email,Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -60,18 +59,10 @@ public class SingupActivity extends AppCompatActivity {
                         }
                     });
                 }
-
-            }
         });
     }
 
-    private boolean validdata(String name, String email, String pass) {
-          if(!(name.matches("/[a-zA-Z]{4,}/"))){
-              Toast.makeText(SingupActivity.this, "name is invalid", Toast.LENGTH_SHORT).show();
-              return false;
-          }
-        return true;
-    }
+
 
     private void init() {
        BtnSignup=findViewById(R.id.BtnSign);
