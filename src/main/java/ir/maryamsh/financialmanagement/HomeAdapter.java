@@ -35,6 +35,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterhol
                     i.putExtra("price", newTransactions.get(position).getPrice());
                     i.putExtra("type", newTransactions.get(position).getType());
                     i.putExtra("des", newTransactions.get(position).getDes());
+                    i.putExtra("name",newTransactions.get(position).getName());
+                    i.putExtra("date",newTransactions.get(position).getDate());
                     context.startActivity(i);
                 }
             });

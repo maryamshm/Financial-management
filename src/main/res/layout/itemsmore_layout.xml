@@ -77,13 +77,13 @@
             android:textColor="@color/white"
             android:textSize="18sp"/>
     </LinearLayout>
-    <ImageView
-        android:layout_width="@dimen/_28sdp"
-        android:layout_height="@dimen/_28sdp"
-        android:layout_alignParentTop="true"
-        android:id="@+id/btn_back"
-        android:layout_marginLeft="@dimen/_12sdp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:src="@drawable/ic_back"/>
+<!--    <ImageView-->
+<!--        android:layout_width="@dimen/_28sdp"-->
+<!--        android:layout_height="@dimen/_28sdp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:id="@+id/btn_back"-->
+<!--        android:layout_marginLeft="@dimen/_12sdp"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_marginTop="@dimen/_12sdp"-->
+<!--        android:src="@drawable/ic_back"/>-->
 </RelativeLayout>

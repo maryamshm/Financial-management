@@ -92,7 +92,7 @@ public class add_fragment extends Fragment {
             public void onComplete(@NonNull Task<Void> task) {
 //                        startActivity(new Intent(SingupActivity.this, LoginActivity.class));
                 if (task.isSuccessful()){
-                    Toast.makeText(context, "yesss", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "add", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(context, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();

@@ -59,7 +59,7 @@
             android:hint="Pass"
             android:textSize="14sp"
             android:textColor="#fff"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:id="@+id/TxtPasslogin"
             android:textColorHint="#E2FFFFFF"
             android:background="@null"

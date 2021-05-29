@@ -22,9 +22,9 @@
         android:layout_alignParentBottom="true"
         android:foregroundGravity="center"
         app:itemFontFamily="@font/kalameh_regular"
-        app:indicatorColor="@color/black"
+        app:indicatorColor="#A286F9"
         app:indicatorRadius="@dimen/_25sdp"
-        app:backgroundColor="#E576F8"
+        app:backgroundColor="#6E50CA"
         app:menu="@menu/bottom_menu"
         />
 </RelativeLayout>
