@@ -73,8 +73,9 @@ public class home_fragment extends Fragment {
                                         price=transaction.getPrice(),
                                         date=transaction.getDate(),
                                         des=transaction.getDes(),
-                                        type=transaction.getType();
-                                transactionList.add(new NewTransaction(name,price,date,des,type));
+                                        type=transaction.getType(),
+                                        id=String.valueOf(document.getId());
+                                transactionList.add(new NewTransaction(name,price,date,des,type,id));
                             }
                         setrecycleritems(transactionList);
                         } else {

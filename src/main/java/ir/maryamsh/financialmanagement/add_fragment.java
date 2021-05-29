@@ -84,7 +84,8 @@ public class add_fragment extends Fragment {
         DateTimeFormatter userFormatter
                 = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
         String date=today.format(userFormatter);
-        newTransaction=new NewTransaction(email,TxtPrice.getText().toString().trim(),date,TxtDes.getText().toString().trim(),spinner.getSelectedItem().toString());
+        String id = database.collection("transaction").document().getId();
+        newTransaction=new NewTransaction(email,TxtPrice.getText().toString().trim(),date,TxtDes.getText().toString().trim(),spinner.getSelectedItem().toString(),id);
         database.collection("transaction")
                 .document().set(newTransaction).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

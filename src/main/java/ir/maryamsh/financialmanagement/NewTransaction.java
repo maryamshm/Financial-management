@@ -2,18 +2,21 @@ package ir.maryamsh.financialmanagement;
 
 public class NewTransaction {
     String name,price,type,date,des;
-    public NewTransaction(String name,String price,String date,String des,String type){
+    String id;
+    public NewTransaction(String name, String price, String date, String des, String type, String id){
         this.name=name;
         this.price=price;
         this.type=type;
         this.date=date;
         this.des=des;
-
+        this.id=id;
     }
     public  NewTransaction(){}
     public String getDate() {
         return date;
     }
+
+    public String getId(){return id;}
 
     public String getDes() {
         return des;
@@ -50,4 +53,6 @@ public class NewTransaction {
     public void setType(String type) {
         this.type = type;
     }
+
+    public void setId(String id){ this.id=id; }
 }

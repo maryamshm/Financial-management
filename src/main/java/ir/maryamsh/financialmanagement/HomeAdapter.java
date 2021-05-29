@@ -1,21 +1,21 @@
 package ir.maryamsh.financialmanagement;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-import java.util.List;
-    public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterholder> {
+
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterholder> {
         Context context;
-        ArrayList<NewTransaction> categoryModels;
-        public HomeAdapter(Context context, ArrayList<NewTransaction> categoryModels) {
+        ArrayList<NewTransaction> newTransactions;
+        public HomeAdapter(Context context, ArrayList<NewTransaction> newTransactions) {
             this.context = context;
-            this.categoryModels = categoryModels;
+            this.newTransactions = newTransactions;
         }
         @Override
         public HomeAdapterholder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -24,18 +24,24 @@ import java.util.List;
         }
         @Override
         public void onBindViewHolder(HomeAdapterholder holder, int position) {
-            NewTransaction model = categoryModels.get(position);
+            NewTransaction model = newTransactions.get(position);
             holder.textView.setText(model.getType());
             holder.more_home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent i = new Intent(context, MoreActivity.class);
+                    String strName = null;
+                    i.putExtra("id", newTransactions.get(position).getId());
+                    i.putExtra("price", newTransactions.get(position).getPrice());
+                    i.putExtra("type", newTransactions.get(position).getType());
+                    i.putExtra("des", newTransactions.get(position).getDes());
+                    context.startActivity(i);
                 }
             });
         }
         @Override
         public int getItemCount() {
-            return categoryModels.size();
+            return newTransactions.size();
         }
         public class HomeAdapterholder extends RecyclerView.ViewHolder {
             TextView textView;
