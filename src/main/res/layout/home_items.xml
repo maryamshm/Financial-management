@@ -6,23 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
      <ImageView
-         android:layout_width="@dimen/_35sdp"
+         android:layout_width="@dimen/_25sdp"
          android:background="@drawable/home_more1"
          android:layout_marginRight="@dimen/_12sdp"
          android:id="@+id/img_home_items"
-         android:layout_height="@dimen/_35sdp"/>
+         android:layout_gravity="center_vertical"
+         android:layout_height="@dimen/_25sdp"/>
       <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="@dimen/_40sdp">
           <TextView
               android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
+              android:layout_height="@dimen/_30sdp"
               android:text="عنوتن"
               android:layout_marginRight="@dimen/_12sdp"
               android:fontFamily="@font/kalameh_bold"
               android:textColor="#000"
               android:id="@+id/titlehome"
-              android:textSize="17sp"
+              android:textSize="14sp"
+              android:layout_centerVertical="true"/>
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="عنوتنdsfds"
+              android:layout_marginRight="@dimen/_12sdp"
+              android:fontFamily="@font/kalameh_bold"
+              android:textColor="#000"
+              android:id="@+id/deshome"
+              android:textSize="11sp"
+              android:layout_alignBottom="@id/titlehome"
               android:layout_centerVertical="true"/>
           <LinearLayout
               android:layout_width="@dimen/_25sdp"
@@ -31,7 +43,7 @@
               android:background="@drawable/home_more1"
               android:orientation="horizontal"
               android:gravity="center"
-              android:layout_height="@dimen/_20sdp"
+              android:layout_height="@dimen/_15sdp"
               android:layout_alignParentLeft="true"
               android:layout_centerVertical="true">
               <ImageView

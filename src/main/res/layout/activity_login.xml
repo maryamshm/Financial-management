@@ -56,7 +56,7 @@
             android:src="@drawable/ic_pass"/>
         <EditText
             android:layout_width="220dp"
-            android:hint="Pass"
+            android:hint="Password"
             android:textSize="14sp"
             android:textColor="#fff"
             android:inputType="textPassword"

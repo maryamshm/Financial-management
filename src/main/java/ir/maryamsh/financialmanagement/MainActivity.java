@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemSelect(int i) {
                 switch (i){
-                    case 0:
+                    case 1:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new home_fragment(MainActivity.this)).commit();
                         break;
-                    case 1:
+                    case 0:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new add_fragment(MainActivity.this)).commit();
                         break;
                     case 2:

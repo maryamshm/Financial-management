@@ -90,7 +90,6 @@ public class add_fragment extends Fragment {
                 .document().set(newTransaction).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-//                        startActivity(new Intent(SingupActivity.this, LoginActivity.class));
                 if (task.isSuccessful()){
                     Toast.makeText(context, "add", Toast.LENGTH_SHORT).show();
                 }

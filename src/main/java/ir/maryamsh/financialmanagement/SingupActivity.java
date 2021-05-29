@@ -36,14 +36,15 @@ public class SingupActivity extends AppCompatActivity {
         BtnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Email=TxtEmail.getText().toString().trim();
-                String Pass=TxtPass.getText().toString().trim();
-                String Name=TXTName.getText().toString().trim();
-                Users users=new Users(Name,Pass,Email);
-                    auth.createUserWithEmailAndPassword(Email,Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                if (validdata()) {
+                    String Email = TxtEmail.getText().toString().trim();
+                    String Pass = TxtPass.getText().toString().trim();
+                    String Name = TXTName.getText().toString().trim();
+                    Users users = new Users(Name, Pass, Email);
+                    auth.createUserWithEmailAndPassword(Email, Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
+                            if (task.isSuccessful()) {
                                 database.collection("users")
                                         .document().set(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -51,17 +52,26 @@ public class SingupActivity extends AppCompatActivity {
                                         startActivity(new Intent(SingupActivity.this, LoginActivity.class));
                                     }
                                 });
-                                Toast.makeText(SingupActivity.this, "Account is Created!", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
+                                Toast.makeText(SingupActivity.this, "حساب کاربری ایجاد شد", Toast.LENGTH_SHORT).show();
+                            } else {
                                 Toast.makeText(SingupActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 }
+            }
         });
     }
 
+    private boolean validdata() {
+        if(TxtEmail.getText().toString().trim().isEmpty() || TxtPass.getText().toString().trim().isEmpty() || TXTName.getText().toString().trim().isEmpty()){
+            Toast.makeText(this, "لطفا فیلد ها را کامل پر کنید", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
 
     private void init() {

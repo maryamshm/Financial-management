@@ -32,25 +32,38 @@ public class LoginActivity extends AppCompatActivity {
         BtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String email=TxtEmail.getText().toString().trim();
-               String pass=TxtPass.getText().toString().trim();
-               auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                   @Override
-                   public void onComplete(@NonNull  Task<AuthResult> task) {
-                       if(task.isSuccessful()){
-                           SharedPreferences.Editor editor = shPref.edit();
-                           editor.putString("email",email);
-                           editor.commit();
-                           startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                       }
-                       else{
-                           Toast.makeText(LoginActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                       }
-                   }
-               });
+                if(validdata()) {
+                    String email = TxtEmail.getText().toString().trim();
+                    String pass = TxtPass.getText().toString().trim();
+                    auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                SharedPreferences.Editor editor = shPref.edit();
+                                editor.putString("email", email);
+                                editor.commit();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            } else {
+                                Toast.makeText(LoginActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
             }
         });
+
     }
+
+    private boolean validdata() {
+        if(TxtEmail.getText().toString().trim().isEmpty() || TxtPass.getText().toString().trim().isEmpty()){
+            Toast.makeText(this, "لطفا فیلد ها را کامل پر کنید", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     private void ini() {
        BtnLogin=findViewById(R.id.ButtonLoginin);
        TxtEmail=findViewById(R.id.TxtEmaillogin);

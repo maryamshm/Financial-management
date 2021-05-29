@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class home_fragment extends Fragment {
     View view;
     Context context;
+    ImageView imgempty;
     RecyclerView recyclerView;
     FirebaseFirestore database;
     ArrayList<NewTransaction> transactionList=new ArrayList<>();
@@ -58,6 +60,7 @@ public class home_fragment extends Fragment {
     private void setview() {
         SharedPreferences shPref = context.getSharedPreferences("shPref", MODE_PRIVATE);
         String email=shPref.getString("email", "emial");
+        imgempty=view.findViewById(R.id.imgempty);
         recyclerView=view.findViewById(R.id.recyclerhome);
         database=FirebaseFirestore.getInstance();
         database.collection("transaction")
@@ -86,8 +89,17 @@ public class home_fragment extends Fragment {
                 });
     }
     private void setrecycleritems(ArrayList<NewTransaction> transactionList) {
+        if(transactionList.isEmpty()){
+            recyclerView.setVisibility(View.INVISIBLE);
+            imgempty.setVisibility(View.VISIBLE);
+        }
+        else{
+            imgempty.setVisibility(View.INVISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
         HomeAdapter adapter = new HomeAdapter(context,transactionList);
         recyclerView.setHasFixedSize(true);
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }

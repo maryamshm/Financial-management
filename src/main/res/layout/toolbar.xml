@@ -13,8 +13,8 @@
         android:textSize="21sp"/>
 
     <ImageView
-        android:layout_width="88dp"
-        android:layout_height="72dp"
+        android:layout_width="93dp"
+        android:layout_height="67dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="@dimen/_25sdp"

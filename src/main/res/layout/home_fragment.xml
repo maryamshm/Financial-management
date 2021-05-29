@@ -18,4 +18,12 @@
         android:id="@+id/recyclerhome"
         android:padding="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_12sdp"/>
+    <ImageView
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_250sdp"
+        android:id="@+id/imgempty"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_empty"/>
+
 </RelativeLayout>
