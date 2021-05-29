@@ -76,7 +76,6 @@ public class home_fragment extends Fragment {
                                         type=transaction.getType();
                                 transactionList.add(new NewTransaction(name,price,date,des,type));
                             }
-                            Log.d("tg",transactionList.get(0).getName());
                         setrecycleritems(transactionList);
                         } else {
                             Log.d("TAG", "Error getting documents: ", task.getException());
@@ -86,12 +85,9 @@ public class home_fragment extends Fragment {
     }
     private void setrecycleritems(ArrayList<NewTransaction> transactionList) {
         HomeAdapter adapter = new HomeAdapter(context,transactionList);
-        Log.d("tg", String.valueOf(transactionList.get(0).getName()));
-        Gson gson = new Gson();
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        Log.d("tg", gson.toJson(transactionList));
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

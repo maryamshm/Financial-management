@@ -11,18 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/framelayout"
-        android:layout_above="@id/bottomBar">
+        android:layout_above="@id/bottomNavigationView">
 
     </FrameLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomBar"
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/navigation_bg"
         android:layout_alignParentBottom="true"
         android:foregroundGravity="center"
-        android:background="@drawable/navigation_bg"
-        app:iconSize="20dp"
-        app:labelVisibilityMode="unlabeled"
+        app:itemFontFamily="@font/kalameh_regular"
+        app:indicatorColor="@color/black"
+        app:indicatorRadius="@dimen/_25sdp"
+        app:backgroundColor="#E576F8"
         app:menu="@menu/bottom_menu"
         />
 </RelativeLayout>
