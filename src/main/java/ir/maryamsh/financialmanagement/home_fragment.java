@@ -96,10 +96,8 @@ public class home_fragment extends Fragment {
                 .setText("در حال دریافت اطلاعات ...")
                 .setIcon(R.drawable.ic_list)
                 .setBackgroundColorRes(R.color.purple_700)
-                .setDuration(2000)
+                .setDuration(1500)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
-                .enableProgress(true)
-                .setProgressColorRes(R.color.purple_500)
                 .show();
     }
     private void setrecycleritems(ArrayList<NewTransaction> transactionList) {

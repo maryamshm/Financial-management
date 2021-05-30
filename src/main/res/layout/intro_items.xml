@@ -40,7 +40,7 @@
               <LinearLayout
                   android:gravity="center"
                   android:layout_width="match_parent"
-                  android:layout_height="50dp"
+                  android:layout_height="100dp"
                   android:id="@+id/lybo"
                   android:layout_centerInParent="true"
                   android:layout_alignParentBottom="true"
@@ -59,17 +59,16 @@
                       android:background="@drawable/radius"/>
 
                   <Button
-                      android:layout_width="@dimen/_85sdp"
-                      android:background="@drawable/intro1"
-                      android:text="شروع"
                       android:id="@+id/btn_start"
+                      android:layout_width="167dp"
+                      android:layout_height="wrap_content"
                       android:layout_marginBottom="@dimen/_5sdp"
+                      android:background="@drawable/button_style"
+                      android:fontFamily="@font/kalameh_bold"
+                      android:text="شروع"
                       android:textColor="@color/white"
                       android:textSize="@dimen/_13sdp"
-                      android:visibility="gone"
-                      android:fontFamily="@font/kalameh_bold"
-                      android:layout_height="@dimen/_45sdp"
-                      />
+                      android:visibility="gone" />
               </LinearLayout>
       </RelativeLayout>
 

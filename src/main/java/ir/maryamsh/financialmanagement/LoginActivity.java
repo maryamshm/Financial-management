@@ -46,11 +46,16 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.commit();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             } else {
+                                if(task.getException().getLocalizedMessage().contains("403")){
+                                    ShowAlert("از روشن بودن فیلتر شکن مطمئن شوید (:");
+                                }
+                                else
                                 Toast.makeText(LoginActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 }
+                ShowAlert("لطفا کمی صبر کنید");
             }
         });
 

@@ -113,10 +113,8 @@ public class add_fragment extends Fragment {
                 .setText(s)
                 .setIcon(R.drawable.ic_list)
                 .setBackgroundColorRes(R.color.purple_700)
-                .setDuration(5000)
+                .setDuration(2000)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
-                .enableProgress(true)
-                .setProgressColorRes(R.color.purple_500)
                 .show();
     }
 }

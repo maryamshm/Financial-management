@@ -55,8 +55,13 @@ public class SingupActivity extends AppCompatActivity {
                                 });
                                 ShowAlert("حساب ساخته شد");
                             } else {
-                                Toast.makeText(SingupActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                            }
+                                if(task.getException().getLocalizedMessage().contains("403")){
+                                   ShowAlert("از روشن بودن فیلتر شکن مطمئن شوید (:");
+                                }
+                                else {
+                                    Toast.makeText(SingupActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+                                }                            }
                         }
                     });
                 }
@@ -71,8 +76,6 @@ public class SingupActivity extends AppCompatActivity {
                 .setBackgroundColorRes(R.color.purple_700)
                 .setDuration(3000)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
-                .enableProgress(true)
-                .setProgressColorRes(R.color.purple_500)
                 .show();
     }
 
