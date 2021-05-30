@@ -1,9 +1,11 @@
 package ir.maryamsh.financialmanagement;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,10 +16,10 @@ import androidx.viewpager.widget.PagerAdapter;
 public class ViewpagerAdapter extends PagerAdapter {
     Context context;
     LayoutInflater layoutInflater;
-    public int ImageArray [] ={R.drawable.img_intro1,R.drawable.img_intro2,R.drawable.img_intro3};
-    public String TitleArray [] ={"عنوان ۱","عنوان ۲","عنوان ۳"};
-    public String DesArray [] ={"توضیحات ۱","توضیحات ۲","توضیحات ۳"};
-    public int ColorArray [] ={R.drawable.intro1,R.drawable.intro2,R.drawable.intro3};
+    public int ImageArray [] ={R.drawable.img_intro1,R.drawable.img_intro2};
+    public String TitleArray [] ={"عنوان ۱","عنوان ۲"};
+    public String DesArray [] ={"توضیحات ۱","توضیحات ۲"};
+    public int ColorArray [] ={R.drawable.intro1,R.drawable.intro2};
 
     public ViewpagerAdapter(Context context){
         this.context=context;
@@ -44,8 +46,22 @@ public class ViewpagerAdapter extends PagerAdapter {
         ImageView img=view.findViewById(R.id.ImgIntro);
         TextView Title=view.findViewById(R.id.TitleIntro);
         TextView Des=view.findViewById(R.id.DesIntro);
+        Button btn1=view.findViewById(R.id.btn1),
+                btn2=view.findViewById(R.id.btn2),
+                btnstart=view.findViewById(R.id.btn_start);
+        if(position==1){
+            btn1.setVisibility(View.GONE);
+            btn2.setVisibility(View.GONE);
+            btnstart.setVisibility(View.VISIBLE);
+        }
+        btnstart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context,AccountActivity.class));
+            }
+        });
         RelativeLayout LyDot=view.findViewById(R.id.LyDot);
-//        LyDot.setBackground(ColorArray[position]);
+        LyDot.setBackgroundResource(ColorArray[position]);
           img.setImageResource(ImageArray[position]);
           Title.setText(TitleArray[position]);
           Des.setText(DesArray[position]);

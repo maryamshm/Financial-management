@@ -1,5 +1,6 @@
 package ir.maryamsh.financialmanagement;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,6 +35,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.gson.Gson;
+import com.tapadoo.alerter.Alerter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +57,7 @@ public class home_fragment extends Fragment {
     public View onCreateView(@NonNull  LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.home_fragment,container,false);
         setview();
+        ShowAlert();
         return view;
     }
     private void setview() {
@@ -88,13 +91,24 @@ public class home_fragment extends Fragment {
                     }
                 });
     }
+    private void ShowAlert() {
+        Alerter.create((Activity)context)
+                .setText("در حال دریافت اطلاعات ...")
+                .setIcon(R.drawable.ic_list)
+                .setBackgroundColorRes(R.color.purple_700)
+                .setDuration(2000)
+                .enableSwipeToDismiss() //seems to not work well with OnClickListener
+                .enableProgress(true)
+                .setProgressColorRes(R.color.purple_500)
+                .show();
+    }
     private void setrecycleritems(ArrayList<NewTransaction> transactionList) {
         if(transactionList.isEmpty()){
-            recyclerView.setVisibility(View.INVISIBLE);
+            recyclerView.setVisibility(View.GONE);
             imgempty.setVisibility(View.VISIBLE);
         }
         else{
-            imgempty.setVisibility(View.INVISIBLE);
+            imgempty.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
         }
         HomeAdapter adapter = new HomeAdapter(context,transactionList);

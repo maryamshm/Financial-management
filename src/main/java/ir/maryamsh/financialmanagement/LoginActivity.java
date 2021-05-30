@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.tapadoo.alerter.Alerter;
 
 public class LoginActivity extends AppCompatActivity {
     Button BtnLogin;
@@ -53,10 +55,21 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+    private void ShowAlert(String s) {
+        Alerter.create(this)
+                .setTitle("ورود")
+                .setText(s)
+                .setIcon(R.drawable.ic_prof)
+                .setIconColorFilter(0)
+                .setBackgroundColorRes(R.color.purple_500)
+                .setDuration(3000)
+                .enableSwipeToDismiss() //seems to not work well with OnClickListener
+                .show();
 
+    }
     private boolean validdata() {
         if(TxtEmail.getText().toString().trim().isEmpty() || TxtPass.getText().toString().trim().isEmpty()){
-            Toast.makeText(this, "لطفا فیلد ها را کامل پر کنید", Toast.LENGTH_SHORT).show();
+            ShowAlert("لطفا فیلد ها را کامل پر کنید");
             return false;
         }
         else {

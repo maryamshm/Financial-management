@@ -3,7 +3,9 @@ package ir.maryamsh.financialmanagement;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.tapadoo.alerter.Alerter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +52,17 @@ public class MoreActivity extends AppCompatActivity {
         });
     }
 
+    private void ShowAlert(String s,int id,int c) {
+        Alerter.create((Activity) this)
+                .setTitle("اطلاعات")
+                .setText(s)
+                .setIcon(id)
+                .setIconColorFilter(0)
+                .setBackgroundColorRes(c)
+                .setDuration(2000)
+                .enableSwipeToDismiss() //seems to not work well with OnClickListener
+                .show();
+    }
     private void UpdateData() {
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         Map<String, Object> data = new HashMap<>();
@@ -60,14 +74,14 @@ public class MoreActivity extends AppCompatActivity {
         rootRef.collection("transaction").document(extras.getString("id")).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(MoreActivity.this, "done", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MoreActivity.this,MainActivity.class));
+               ShowAlert("به روز رسانی شد",R.drawable.ic_list,R.color.green);
             }
         });
 
     }
 
     private void DeleteData() {
+        ShowAlert("حذف شد",R.drawable.ic_delete,R.color.red);
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         rootRef.collection("transaction").document(extras.getString("id")).delete();
         startActivity(new Intent(MoreActivity.this,MainActivity.class));

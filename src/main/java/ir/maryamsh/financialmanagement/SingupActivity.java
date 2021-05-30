@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+import com.tapadoo.alerter.Alerter;
 
 public class SingupActivity extends AppCompatActivity {
     Button BtnSignup;
@@ -52,7 +53,7 @@ public class SingupActivity extends AppCompatActivity {
                                         startActivity(new Intent(SingupActivity.this, LoginActivity.class));
                                     }
                                 });
-                                Toast.makeText(SingupActivity.this, "حساب کاربری ایجاد شد", Toast.LENGTH_SHORT).show();
+                                ShowAlert("حساب ساخته شد");
                             } else {
                                 Toast.makeText(SingupActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                             }
@@ -62,17 +63,28 @@ public class SingupActivity extends AppCompatActivity {
             }
         });
     }
+    private void ShowAlert(String s) {
+        Alerter.create(this)
+                .setTitle("ساخت حساب کابری")
+                .setText(s)
+                .setIcon(R.drawable.ic_prof)
+                .setBackgroundColorRes(R.color.purple_700)
+                .setDuration(3000)
+                .enableSwipeToDismiss() //seems to not work well with OnClickListener
+                .enableProgress(true)
+                .setProgressColorRes(R.color.purple_500)
+                .show();
+    }
 
     private boolean validdata() {
         if(TxtEmail.getText().toString().trim().isEmpty() || TxtPass.getText().toString().trim().isEmpty() || TXTName.getText().toString().trim().isEmpty()){
-            Toast.makeText(this, "لطفا فیلد ها را کامل پر کنید", Toast.LENGTH_SHORT).show();
+            ShowAlert("لطفا فیلد ها را کامل پر کنید");
             return false;
         }
         else {
             return true;
         }
     }
-
 
     private void init() {
        BtnSignup=findViewById(R.id.BtnSign);

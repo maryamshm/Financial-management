@@ -24,6 +24,7 @@
         app:itemFontFamily="@font/kalameh_regular"
         app:indicatorColor="#A286F9"
         app:indicatorRadius="@dimen/_25sdp"
+        app:activeItem="1"
         app:backgroundColor="#6E50CA"
         app:menu="@menu/bottom_menu"
         />

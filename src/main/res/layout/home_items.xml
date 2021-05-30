@@ -37,28 +37,28 @@
               android:layout_alignBottom="@id/titlehome"
               android:layout_centerVertical="true"/>
           <LinearLayout
-              android:layout_width="@dimen/_25sdp"
-              android:padding="@dimen/_8sdp"
+              android:layout_width="@dimen/_27sdp"
+              android:padding="@dimen/_5sdp"
               android:id="@+id/more_home"
               android:background="@drawable/home_more1"
               android:orientation="horizontal"
               android:gravity="center"
-              android:layout_height="@dimen/_15sdp"
+              android:layout_height="@dimen/_18sdp"
               android:layout_alignParentLeft="true"
               android:layout_centerVertical="true">
               <ImageView
-                  android:layout_width="@dimen/_2sdp"
-                  android:layout_height="@dimen/_2sdp"
+                  android:layout_width="@dimen/_3sdp"
+                  android:layout_height="@dimen/_3sdp"
                   android:background="@drawable/radius"/>
               <ImageView
                   android:layout_marginLeft="@dimen/_2sdp"
                   android:layout_marginRight="@dimen/_2sdp"
-                  android:layout_width="@dimen/_2sdp"
-                  android:layout_height="@dimen/_2sdp"
+                  android:layout_width="@dimen/_3sdp"
+                  android:layout_height="@dimen/_3sdp"
                   android:background="@drawable/radius"/>
               <ImageView
-                  android:layout_width="@dimen/_2sdp"
-                  android:layout_height="@dimen/_2sdp"
+                  android:layout_width="@dimen/_3sdp"
+                  android:layout_height="@dimen/_3sdp"
                   android:background="@drawable/radius"/>
           </LinearLayout>
       </RelativeLayout>

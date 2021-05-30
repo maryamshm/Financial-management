@@ -1,5 +1,6 @@
 package ir.maryamsh.financialmanagement;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -22,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.tapadoo.alerter.Alerter;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -58,7 +60,11 @@ public class add_fragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                InsertData();
+                if (TxtDes.getText().toString().isEmpty() || TxtPrice.getText().toString().isEmpty()) {
+                     ShowAlert("لطفا اطلاعات را تکمیل کنید");
+                } else {
+                    InsertData();
+                }
             }
         });
         return view;
@@ -91,12 +97,26 @@ public class add_fragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(context, "add", Toast.LENGTH_SHORT).show();
+                    ShowAlert("اطلاعات اضافه شد (:");
+                    TxtDes.setText("");
+                    TxtPrice.setText("");
                 }
                 else{
                     Toast.makeText(context, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+    private void ShowAlert(String s) {
+        Alerter.create((Activity) context)
+                .setTitle("اضافه کردن داده")
+                .setText(s)
+                .setIcon(R.drawable.ic_list)
+                .setBackgroundColorRes(R.color.purple_700)
+                .setDuration(5000)
+                .enableSwipeToDismiss() //seems to not work well with OnClickListener
+                .enableProgress(true)
+                .setProgressColorRes(R.color.purple_500)
+                .show();
     }
 }

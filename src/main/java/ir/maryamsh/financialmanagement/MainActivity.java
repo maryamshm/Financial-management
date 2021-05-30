@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new home_fragment(MainActivity.this)).commit();
                         break;
-                    case 0:
+                    case 2:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new add_fragment(MainActivity.this)).commit();
                         break;
-                    case 2:
+                    case 0:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new report_fragment()).commit();
                         break;
                 }

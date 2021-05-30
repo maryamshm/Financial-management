@@ -29,10 +29,8 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
         SharedPreferences shPref;
-        shPref = getSharedPreferences("shPref", MODE_PRIVATE);
-        if(shPref.getString("email", null)!=null){
-            startActivity(new Intent(AccountActivity.this,MainActivity.class));
-        }
+
+
         init();
         BtnSingin.setOnClickListener(new View.OnClickListener() {
             @Override

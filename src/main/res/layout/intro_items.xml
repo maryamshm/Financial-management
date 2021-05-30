@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/layputintro"
-    android:paddingTop="35dp"
+    android:paddingTop="20dp"
     android:background="@drawable/sliderbg"
     android:layout_height="match_parent">
 
@@ -12,6 +12,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:text="عنوان"
+         android:fontFamily="@font/kalameh_bold"
          android:textColor="@color/white"
          android:textSize="42sp"
          android:textStyle="bold"
@@ -29,7 +30,8 @@
               android:layout_width="362dp"
               android:layout_height="wrap_content"
               android:id="@+id/DesIntro"
-             android:layout_marginTop="@dimen/_84sdp"
+              android:fontFamily="@font/kalameh_regular"
+              android:layout_marginTop="@dimen/_84sdp"
               android:lineSpacingExtra="8sp"
               android:textAlignment="center"
               android:text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه  "
@@ -40,30 +42,42 @@
                   android:layout_width="match_parent"
                   android:layout_height="50dp"
                   android:id="@+id/lybo"
+                  android:layout_centerInParent="true"
                   android:layout_alignParentBottom="true"
                   android:orientation="horizontal">
                   <Button
                       android:layout_width="9dp"
                       android:layout_height="9dp"
+                      android:id="@+id/btn2"
                       android:background="@drawable/radius"/>
                   <Button
                       android:layout_width="9dp"
                       android:layout_height="9dp"
+                      android:id="@+id/btn1"
                       android:layout_marginLeft="12dp"
                       android:layout_marginRight="12dp"
                       android:background="@drawable/radius"/>
+
                   <Button
-                      android:layout_width="9dp"
-                      android:layout_height="9dp"
-                      android:background="@drawable/radius"/>
+                      android:layout_width="@dimen/_85sdp"
+                      android:background="@drawable/intro1"
+                      android:text="شروع"
+                      android:id="@+id/btn_start"
+                      android:layout_marginBottom="@dimen/_5sdp"
+                      android:textColor="@color/white"
+                      android:textSize="@dimen/_13sdp"
+                      android:visibility="gone"
+                      android:fontFamily="@font/kalameh_bold"
+                      android:layout_height="@dimen/_45sdp"
+                      />
               </LinearLayout>
       </RelativeLayout>
 
     <ImageView
         android:id="@+id/ImgIntro"
         android:layout_width="@dimen/_212sdp"
-        android:layout_height="@dimen/_399sdp"
+        android:layout_height="@dimen/_309sdp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/_33sdp"
+        android:layout_marginTop="@dimen/_55sdp"
         android:src="@drawable/img_intro1" />
 </RelativeLayout>
