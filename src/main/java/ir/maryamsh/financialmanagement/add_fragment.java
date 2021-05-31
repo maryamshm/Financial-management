@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,10 +76,29 @@ public class add_fragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
+                Toast.makeText(context, "d", Toast.LENGTH_SHORT).show();
                 if (TxtDes.getText().toString().isEmpty() || TxtPrice.getText().toString().isEmpty()) {
                      ShowAlert("لطفا اطلاعات را تکمیل کنید");
                 } else {
                     InsertData();
+                }
+            }
+        });
+        TxtPrice.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() == 1 && s.toString().startsWith("0")) {
+                    s.clear();
                 }
             }
         });
@@ -107,10 +128,7 @@ public class add_fragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void InsertData() {
         String email=shPref.getString("email", null);
-        LocalDate today = LocalDate.now(ZoneId.of("Asia/Tehran"));
-        DateTimeFormatter userFormatter
-                = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
-        String date=today.format(userFormatter);
+        String date=tvtdate.getText().toString().trim();
         String id = database.collection("transaction").document().getId();
         newTransaction=new NewTransaction(email,TxtPrice.getText().toString().trim(),date,TxtDes.getText().toString().trim(),spinner.getSelectedItem().toString(),id);
         database.collection("transaction")
@@ -133,7 +151,7 @@ public class add_fragment extends Fragment {
                 .setTitle("اضافه کردن داده")
                 .setText(s)
                 .setIcon(R.drawable.ic_list)
-                .setBackgroundColorRes(R.color.purple_700)
+                .setBackgroundColorRes(R.color.toastbg)
                 .setDuration(2000)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();

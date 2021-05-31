@@ -29,13 +29,12 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
         SharedPreferences shPref;
-
-
         init();
         BtnSingin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AccountActivity.this,SingupActivity.class));
+                finish();
 
             }
         });
@@ -43,6 +42,7 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AccountActivity.this,LoginActivity.class));
+                finish();
             }
         });
 

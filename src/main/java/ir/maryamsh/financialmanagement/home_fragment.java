@@ -95,7 +95,7 @@ public class home_fragment extends Fragment {
         Alerter.create((Activity)context)
                 .setText("در حال دریافت اطلاعات ...")
                 .setIcon(R.drawable.ic_list)
-                .setBackgroundColorRes(R.color.purple_700)
+                .setBackgroundColorRes(R.color.toastbg)
                 .setDuration(1500)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();

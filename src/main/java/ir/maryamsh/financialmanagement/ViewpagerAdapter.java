@@ -1,5 +1,6 @@
 package ir.maryamsh.financialmanagement;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import static java.security.AccessController.getContext;
 
 public class ViewpagerAdapter extends PagerAdapter {
     Context context;
@@ -61,6 +64,7 @@ public class ViewpagerAdapter extends PagerAdapter {
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context,AccountActivity.class));
+                ((Activity)context).finish();
             }
         });
         RelativeLayout LyDot=view.findViewById(R.id.LyDot);

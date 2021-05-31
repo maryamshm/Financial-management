@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tapadoo.alerter.Alerter;
 
+import java.util.Locale;
+
 public class LoginActivity extends AppCompatActivity {
     Button BtnLogin;
     EditText TxtEmail;
@@ -29,6 +32,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ini();
+        Locale locale = new Locale("fa");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        this.getApplicationContext().getResources().updateConfiguration(config, null);
         shPref = getSharedPreferences("shPref", MODE_PRIVATE);
         auth=FirebaseAuth.getInstance();
         BtnLogin.setOnClickListener(new View.OnClickListener() {
@@ -41,11 +49,11 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-
                                 SharedPreferences.Editor editor = shPref.edit();
                                 editor.putString("email", email);
                                 editor.commit();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
                             } else {
                                 if(task.getException().getLocalizedMessage().contains("403")){
                                     ShowAlert("از روشن بودن فیلتر شکن مطمئن شوید (:");
@@ -67,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 .setText(s)
                 .setIcon(R.drawable.ic_prof)
                 .setIconColorFilter(0)
-                .setBackgroundColorRes(R.color.purple_500)
+                .setBackgroundColorRes(R.color.toastbg)
                 .setDuration(3000)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();

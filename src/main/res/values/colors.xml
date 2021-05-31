@@ -7,8 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="toastbg">#A286F9</color>
-    <color name="toastline">#6E50CA</color>
+    <color name="toastbg">#6C2DDB</color>
     <color name="green">#4CAF50</color>
     <color name="red">#FF003B</color>
 </resources>

@@ -9,7 +9,7 @@
         layout="@layout/toolbar"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="130sp"
+        android:layout_height="@dimen/_80sdp"
         />
     <LinearLayout
         android:layout_width="@dimen/_215sdp"
@@ -42,8 +42,25 @@
             android:fontFamily="@font/kalameh_regular"
             android:textSize="18sp"
             android:textDirection="rtl"
-            android:layout_marginBottom="@dimen/_12sdp"
             android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تاریخ"
+            android:textColor="#464646"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/kalameh_regular"
+            android:padding="12dp"
+            android:id="@+id/tvdate"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="درامد"
+            android:textColor="#464646"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/kalameh_regular"
+            android:padding="12dp"
+            android:id="@+id/tvtype"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -62,7 +79,7 @@
                android:layout_weight="1"
                android:id="@+id/update_more"
                 android:fontFamily="@font/kalameh_bold"
-               android:background="@drawable/button_style"
+               android:background="@drawable/disablebtn"
                android:text="به روز رسانی"
                android:textColor="@color/white"
                android:textSize="18sp"/>

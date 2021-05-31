@@ -62,6 +62,7 @@ public class SingupActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         startActivity(new Intent(SingupActivity.this, LoginActivity.class));
+                                        finish();
                                     }
                                 });
                                 ShowAlert("حساب ساخته شد");
@@ -85,7 +86,7 @@ public class SingupActivity extends AppCompatActivity {
                 .setTitle("ساخت حساب کابری")
                 .setText(s)
                 .setIcon(R.drawable.ic_prof)
-                .setBackgroundColorRes(R.color.purple_700)
+                .setBackgroundColorRes(R.color.toastbg)
                 .setDuration(2000)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();

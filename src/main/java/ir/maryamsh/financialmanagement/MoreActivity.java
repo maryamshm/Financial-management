@@ -7,11 +7,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,14 +33,54 @@ import java.util.Map;
 public class MoreActivity extends AppCompatActivity {
     FirebaseFirestore database;
     Button BtnDel,BtnUpdate;
+    TextView Txtype,TxtDate;
     EditText TxtDes,TxtPrice;
     Bundle extras;
+    boolean ischange;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.itemsmore_layout);
         init();
         setvalue();
+
+        TxtDes.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+               ischange=true;
+               BtnUpdate.setBackgroundResource(R.drawable.button_style);
+            }
+        });
+        TxtPrice.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() == 1 && s.toString().startsWith("0")) {
+                    s.clear();
+                }
+                ischange=true;
+                BtnUpdate.setBackgroundResource(R.drawable.button_style);
+            }
+        });
         BtnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +90,7 @@ public class MoreActivity extends AppCompatActivity {
         BtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(ischange)
                 UpdateData();
             }
         });
@@ -88,14 +132,15 @@ public class MoreActivity extends AppCompatActivity {
     }
     private void setvalue() {
         extras = getIntent().getExtras();
-        String type= extras.getString("type"),
-        des=extras.getString("des"),
-        price=extras.getString("price");
-        TxtPrice.setText(price);
-        TxtDes.setText(des);
+        TxtPrice.setText(extras.getString("price"));
+        TxtDes.setText(extras.getString("des"));
+        Txtype.setText(extras.getString("type"));
+        TxtDate.setText(extras.getString("date"));
     }
 
     private void init() {
+       TxtDate=findViewById(R.id.tvdate);
+       Txtype=findViewById(R.id.tvtype);
        BtnDel=findViewById(R.id.delete_more);
        BtnUpdate=findViewById(R.id.update_more);
        TxtDes=findViewById(R.id.txtdes_more);
