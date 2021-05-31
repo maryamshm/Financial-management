@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="#EEEEEE"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:layout_height="match_parent">
 
     <include
         layout="@layout/toolbar"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_height="?attr/actionBarSize"
         />
     <LinearLayout
         android:layout_width="@dimen/_215sdp"
         android:gravity="center"
         android:padding="8dp"
         android:id="@+id/form"
+        android:layout_marginTop="@dimen/_72sdp"
+        android:layout_marginBottom="@dimen/_23sdp"
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -28,6 +31,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:textColorHint="#5B5B5B"
             android:fontFamily="@font/kalameh_regular"
+            android:backgroundTint="@color/toastbg"
             android:textSize="18sp"
             android:layout_marginBottom="@dimen/_12sdp"
             android:textDirection="rtl"
@@ -41,6 +45,7 @@
             android:textColorHint="#5B5B5B"
             android:fontFamily="@font/kalameh_regular"
             android:textSize="18sp"
+            android:backgroundTint="@color/toastbg"
             android:textDirection="rtl"
             android:layout_height="wrap_content"/>
         <TextView
@@ -51,6 +56,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:fontFamily="@font/kalameh_regular"
             android:padding="12dp"
+            android:backgroundTint="@color/toastbg"
             android:id="@+id/tvdate"/>
         <TextView
             android:layout_width="match_parent"
@@ -60,6 +66,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:fontFamily="@font/kalameh_regular"
             android:padding="12dp"
+            android:backgroundTint="@color/toastbg"
             android:id="@+id/tvtype"/>
     </LinearLayout>
     <LinearLayout
@@ -103,4 +110,4 @@
 <!--        android:layout_alignParentLeft="true"-->
 <!--        android:layout_marginTop="@dimen/_12sdp"-->
 <!--        android:src="@drawable/ic_back"/>-->
-</RelativeLayout>
+</LinearLayout>

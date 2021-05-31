@@ -10,7 +10,7 @@
         android:layout_marginBottom="@dimen/_40sdp"
         android:layout_alignParentTop="true"
          android:layout_width="match_parent"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_height="?attr/actionBarSize"
         />
     <LinearLayout
         android:id="@+id/form"
@@ -32,6 +32,7 @@
             android:fontFamily="@font/kalameh_regular"
             android:hint="مبلغ"
             android:inputType="number"
+            android:backgroundTint="@color/toastbg"
             android:maxLines="1"
             android:padding="12dp"
             android:textColorHint="#5B5B5B"
@@ -61,14 +62,16 @@
             android:maxLines="1"
             android:padding="12dp"
             android:singleLine="true"
+            android:backgroundTint="@color/toastbg"
             android:textColorHint="#5B5B5B"
             android:textDirection="rtl"
             android:textSize="16sp" />
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="تاریخ"
+            android:backgroundTint="@color/toastbg"
             android:textColor="#000"
             android:layout_marginTop="@dimen/_12sdp"
             android:textColorHint="@color/black"
@@ -79,7 +82,7 @@
 
     <RelativeLayout
         android:layout_width="@dimen/_125sdp"
-        android:layout_height="53dp"
+        android:layout_height="@dimen/_33sdp"
         android:layout_alignBottom="@id/form"
         android:layout_centerHorizontal="true"
         android:id="@+id/add_data"
@@ -90,7 +93,7 @@
             android:layout_centerInParent="true"
             android:text="اضافه کردن"
             android:textColor="#fff"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:fontFamily="@font/kalameh_bold"/>
         <ImageView
             android:layout_width="@dimen/_20sdp"

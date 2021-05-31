@@ -76,7 +76,6 @@ public class add_fragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "d", Toast.LENGTH_SHORT).show();
                 if (TxtDes.getText().toString().isEmpty() || TxtPrice.getText().toString().isEmpty()) {
                      ShowAlert("لطفا اطلاعات را تکمیل کنید");
                 } else {
@@ -121,7 +120,7 @@ public class add_fragment extends Fragment {
         list.add("هزینه");
         list.add("درامد");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item,list);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner);
         spinner.setAdapter(adapter);
     }
 
@@ -141,7 +140,7 @@ public class add_fragment extends Fragment {
                     TxtPrice.setText("");
                 }
                 else{
-                    Toast.makeText(context, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    ShowAlert(task.getException().getLocalizedMessage());
                 }
             }
         });

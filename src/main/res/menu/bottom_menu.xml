@@ -14,9 +14,9 @@
         android:id="@+id/add_item"
         android:title="اضافه کردن"
         android:icon="@drawable/ic_add"/>
-<!--    <item-->
-<!--        android:id="@+id/show_item"-->
-<!--        android:title="نمایش"-->
-<!--        android:icon="@drawable/ic_home"/>-->
+    <item
+        android:id="@+id/prof_item"
+        android:title="پروفایل"
+        android:icon="@drawable/ic_prof"/>
 
 </menu>

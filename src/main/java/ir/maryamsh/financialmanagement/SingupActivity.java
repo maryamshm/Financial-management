@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -35,12 +36,6 @@ public class SingupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Configuration overrideConfiguration = this.getResources().getConfiguration();
-        Locale locale = new Locale("fa_IR");
-        overrideConfiguration.setLocale(locale);
-        Context context  = createConfigurationContext(overrideConfiguration);
-        Resources resources = context.getResources();
-
         setContentView(R.layout.activity_singup);
         init();
         database=FirebaseFirestore.getInstance();
@@ -61,7 +56,7 @@ public class SingupActivity extends AppCompatActivity {
                                         .document().set(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        startActivity(new Intent(SingupActivity.this, LoginActivity.class));
+                                        Login(Email);
                                         finish();
                                     }
                                 });
@@ -81,6 +76,15 @@ public class SingupActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void Login(String email) {
+        SharedPreferences shPref = getSharedPreferences("shPref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = shPref.edit();
+        editor.putString("email", email);
+        editor.commit();
+        startActivity(new Intent(SingupActivity.this, MainActivity.class));
+    }
+
     private void ShowAlert(String s) {
         Alerter.create(this)
                 .setTitle("ساخت حساب کابری")

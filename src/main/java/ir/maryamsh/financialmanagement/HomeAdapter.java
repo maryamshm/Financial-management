@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterhol
         }
         @Override
         public void onBindViewHolder(HomeAdapterholder holder, int position) {
+            if(newTransactions.get(position).getType().contains("د")){
+                holder.img_home_items.setBackgroundResource(R.drawable.earning);
+                holder.more_home.setBackgroundResource(R.drawable.earning);
+            }
+            else{
+                holder.img_home_items.setBackgroundResource(R.drawable.expenditures);
+                holder.more_home.setBackgroundResource(R.drawable.expenditures);
+            }
             NewTransaction transaction = newTransactions.get(position);
             holder.txttitle.setText(transaction.getType());
             holder.txtdes.setText(transaction.getDes());
@@ -50,8 +59,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterhol
         public class HomeAdapterholder extends RecyclerView.ViewHolder {
             TextView txttitle,txtdes,txtdate;
             LinearLayout more_home;
+            ImageView img_home_items;
+
             public HomeAdapterholder(View itemView) {
                 super(itemView);
+                img_home_items=itemView.findViewById(R.id.img_home_items);
                 txtdes=itemView.findViewById(R.id.deshome);
                 txttitle = itemView.findViewById(R.id.titlehome);
                 more_home=itemView.findViewById(R.id.more_home);

@@ -59,11 +59,11 @@ public class LoginActivity extends AppCompatActivity {
                                     ShowAlert("از روشن بودن فیلتر شکن مطمئن شوید (:");
                                 }
                                 else
-                                Toast.makeText(LoginActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                    ShowAlert(task.getException().getLocalizedMessage());
                             }
                         }
                     });
-
+                    ShowAlert("لطفا کمی صبر کنید");
                 }
             }
         });

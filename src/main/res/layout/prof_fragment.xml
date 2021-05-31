@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#EEEEEE"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="@dimen/_215sdp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imgedite"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/formtbg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:id="@+id/imgedit"
+            android:src="@drawable/ic_edit" />
+
+        <EditText
+            android:id="@+id/txtemail_"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:backgroundTint="@color/toastbg"
+            android:fontFamily="@font/kalameh_regular"
+            android:hint="ایمیل"
+            android:inputType="number"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:textColorHint="#5B5B5B"
+            android:textDirection="rtl"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/txtName_"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:backgroundTint="@color/toastbg"
+            android:fontFamily="@font/kalameh_regular"
+            android:hint="نام"
+            android:inputType="number"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:textColorHint="#5B5B5B"
+            android:textDirection="rtl"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/txtPass_"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:backgroundTint="@color/toastbg"
+            android:fontFamily="@font/kalameh_regular"
+            android:hint="پسورد"
+            android:inputType="number"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:textColorHint="#5B5B5B"
+            android:textDirection="rtl"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgedite"
+        android:layout_width="110dp"
+        android:layout_height="105dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/_160sdp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_edite"
+        android:padding="@dimen/_12sdp"
+        android:background="@drawable/imgborder"
+        app:layout_constraintBottom_toBottomOf="@+id/form"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:layout_width="103dp"
+        android:layout_height="48dp"
+        android:background="@drawable/exit_btn"
+        android:fontFamily="@font/kalameh_bold"
+        android:text="خروج"
+        android:textColor="#fff"
+        android:id="@+id/btnexit"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form"
+        app:layout_constraintVertical_bias="0.367" />
+</androidx.constraintlayout.widget.ConstraintLayout>

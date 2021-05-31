@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
      <ImageView
          android:layout_width="@dimen/_25sdp"
-         android:background="@drawable/home_more1"
+         android:background="@drawable/expenditures"
          android:layout_marginRight="@dimen/_12sdp"
          android:id="@+id/img_home_items"
          android:layout_gravity="center_vertical"
@@ -53,7 +53,7 @@
               android:layout_width="@dimen/_27sdp"
               android:padding="@dimen/_5sdp"
               android:id="@+id/more_home"
-              android:background="@drawable/home_more1"
+              android:background="@drawable/expenditures"
               android:orientation="horizontal"
               android:gravity="center"
               android:layout_height="@dimen/_18sdp"

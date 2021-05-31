@@ -115,13 +115,29 @@ public class MoreActivity extends AppCompatActivity {
         data.put("name", extras.getString("name"));
         data.put("type",extras.getString("type"));
         data.put("date",extras.getString("date"));
-        rootRef.collection("transaction").document(extras.getString("id")).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+//        rootRef.collection("transaction").document(extras.getString("id")).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//               ShowAlert("به روز رسانی شد",R.drawable.ic_list,R.color.green);
+//            }
+//
+//        });
+        rootRef.collection("transaction").document(extras.getString("id")).set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onSuccess(Void aVoid) {
-               ShowAlert("به روز رسانی شد",R.drawable.ic_list,R.color.green);
+            public void onComplete(Task<Void> task) {
+                if(task.isSuccessful()){
+                    ShowAlert("به روز رسانی شد",R.drawable.ic_list,R.color.green);
+                }
+                else{
+                    if(task.getException().getLocalizedMessage().contains("403")){
+                        ShowAlert("از روشن بودن فیلتر شکن مطمئن شوید (:",R.drawable.ic_list,R.color.red);
+                    }
+                    else {
+                        ShowAlert(task.getException().getLocalizedMessage(),R.drawable.ic_list,R.color.red);
+                    }
+                }
             }
         });
-
     }
 
     private void DeleteData() {
