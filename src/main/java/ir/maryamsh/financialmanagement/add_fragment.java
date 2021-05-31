@@ -1,6 +1,7 @@
 package ir.maryamsh.financialmanagement;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -10,26 +11,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.tapadoo.alerter.Alerter;
 
+import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -44,6 +51,7 @@ public class add_fragment extends Fragment {
     RelativeLayout AddDate;
     NewTransaction newTransaction;
     SharedPreferences shPref;
+    TextView tvtdate;
     public add_fragment(Context context){
         this.context=context;
     }
@@ -56,6 +64,12 @@ public class add_fragment extends Fragment {
         view=inflater.inflate(R.layout.add_fragment,container,false);
         setview();
         shPref = context.getSharedPreferences("shPref", MODE_PRIVATE);
+        tvtdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowDateOicker();
+            }
+        });
         AddDate.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -69,7 +83,14 @@ public class add_fragment extends Fragment {
         });
         return view;
     }
+
+    private void ShowDateOicker() {
+        DialogFragment datePicker = new DatePickerFragment(context);
+        datePicker.show(getActivity().getSupportFragmentManager(), "date picker");
+    }
+
     private void setview() {
+        tvtdate=view.findViewById(R.id.tvdate);
         database=FirebaseFirestore.getInstance();
         TxtDes=view.findViewById(R.id.txtdes);
         TxtPrice=view.findViewById(R.id.txtprice);
@@ -117,4 +138,5 @@ public class add_fragment extends Fragment {
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();
     }
+
 }

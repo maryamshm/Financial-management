@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
                                 SharedPreferences.Editor editor = shPref.edit();
                                 editor.putString("email", email);
                                 editor.commit();
@@ -54,8 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     });
+
                 }
-                ShowAlert("لطفا کمی صبر کنید");
             }
         });
 

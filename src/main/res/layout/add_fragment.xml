@@ -1,61 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="#EEEEEE"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_height="match_parent">
     <include
         layout="@layout/toolbar"
+        android:layout_marginBottom="@dimen/_40sdp"
         android:layout_alignParentTop="true"
          android:layout_width="match_parent"
-        android:layout_height="130sp"
+        android:layout_height="@dimen/_80sdp"
         />
-     <LinearLayout
-         android:layout_width="@dimen/_215sdp"
-         android:gravity="center"
-         android:padding="8dp"
-         android:id="@+id/form"
-         android:orientation="vertical"
-         android:layout_height="wrap_content"
-         android:layout_centerInParent="true"
-         android:background="@drawable/formtbg">
-         <EditText
-             android:layout_width="match_parent"
-             android:hint="مبلغ"
-             android:padding="12dp"
-             android:maxLines="1"
-             android:id="@+id/txtprice"
-             android:inputType="number"
-             android:layout_marginTop="@dimen/_12sdp"
-             android:textColorHint="#5B5B5B"
-             android:fontFamily="@font/kalameh_regular"
-             android:textSize="18sp"
-             android:textDirection="rtl"
-             android:layout_height="wrap_content"/>
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/spinnertype"
-             android:layout_marginBottom="@dimen/_12sdp"
-             android:layout_marginTop="@dimen/_12sdp"
-             android:spinnerMode="dropdown"
-             />
-         <EditText
-             android:layout_width="match_parent"
-             android:hint="توضیحات"
-             android:singleLine="true"
-             android:padding="12dp"
-             android:id="@+id/txtdes"
-             android:textColorHint="#5B5B5B"
-             android:fontFamily="@font/kalameh_regular"
-             android:maxLines="1"
-             android:lines="1"
-             android:maxLength="35"
-             android:textSize="18sp"
-             android:textDirection="rtl"
-             android:layout_marginBottom="@dimen/_12sdp"
-             android:layout_height="wrap_content"/>
-     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="305dp"
+        android:layout_marginBottom="@dimen/_33sdp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/formtbg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="8dp"
+        >
+
+        <EditText
+            android:id="@+id/txtprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/kalameh_regular"
+            android:hint="مبلغ"
+            android:inputType="number"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:textColorHint="#5B5B5B"
+            android:textDirection="rtl"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinnertype"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:textAlignment="center"
+            android:tooltipText="دسته بندی"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_33sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:spinnerMode="dropdown" />
+
+        <EditText
+            android:id="@+id/txtdes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kalameh_regular"
+            android:hint="توضیحات"
+            android:lines="1"
+            android:maxLength="35"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:textColorHint="#5B5B5B"
+            android:textDirection="rtl"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="تاریخ"
+            android:textColor="#000"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:textColorHint="@color/black"
+            android:fontFamily="@font/kalameh_regular"
+            android:padding="12dp"
+            android:id="@+id/tvdate"/>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="@dimen/_125sdp"
@@ -63,8 +83,6 @@
         android:layout_alignBottom="@id/form"
         android:layout_centerHorizontal="true"
         android:id="@+id/add_data"
-        android:layout_marginTop="@dimen/_55sdp"
-        android:layout_marginBottom="-125dp"
         android:background="@drawable/button_style">
         <TextView
             android:layout_width="wrap_content"
@@ -79,8 +97,8 @@
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
-            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
             android:layout_height="@dimen/_20sdp"
             android:src="@drawable/plus" />
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

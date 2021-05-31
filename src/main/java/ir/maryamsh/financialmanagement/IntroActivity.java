@@ -21,6 +21,7 @@ public class IntroActivity extends AppCompatActivity {
         SharedPreferences shPref = getSharedPreferences("shPref", MODE_PRIVATE);
         if(shPref.getString("email", null)!=null){
             startActivity(new Intent(IntroActivity.this,MainActivity.class));
+            finish();
         }
     }
 }

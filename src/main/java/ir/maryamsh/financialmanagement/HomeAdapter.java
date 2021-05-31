@@ -24,9 +24,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterhol
         }
         @Override
         public void onBindViewHolder(HomeAdapterholder holder, int position) {
-            NewTransaction model = newTransactions.get(position);
-            holder.textView.setText(model.getType());
-            holder.txtdes.setText(model.getDes());
+            NewTransaction transaction = newTransactions.get(position);
+            holder.txttitle.setText(transaction.getType());
+            holder.txtdes.setText(transaction.getDes());
+            holder.txtdate.setText(transaction.getDate());
             holder.more_home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -47,13 +48,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterhol
             return newTransactions.size();
         }
         public class HomeAdapterholder extends RecyclerView.ViewHolder {
-            TextView textView,txtdes;
+            TextView txttitle,txtdes,txtdate;
             LinearLayout more_home;
             public HomeAdapterholder(View itemView) {
                 super(itemView);
                 txtdes=itemView.findViewById(R.id.deshome);
-                textView = itemView.findViewById(R.id.titlehome);
+                txttitle = itemView.findViewById(R.id.titlehome);
                 more_home=itemView.findViewById(R.id.more_home);
+                txtdate=itemView.findViewById(R.id.txtdate);
             }
         }
     }

@@ -8,7 +8,7 @@
         layout="@layout/toolbar"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="130sp"
+        android:layout_height="@dimen/_80sdp"
         />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="@dimen/_250sdp"

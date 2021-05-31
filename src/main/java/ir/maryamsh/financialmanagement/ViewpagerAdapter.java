@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -46,10 +47,12 @@ public class ViewpagerAdapter extends PagerAdapter {
         ImageView img=view.findViewById(R.id.ImgIntro);
         TextView Title=view.findViewById(R.id.TitleIntro);
         TextView Des=view.findViewById(R.id.DesIntro);
+        RelativeLayout layoutL=view.findViewById(R.id.layputintro);
         Button btn1=view.findViewById(R.id.btn1),
                 btn2=view.findViewById(R.id.btn2),
                 btnstart=view.findViewById(R.id.btn_start);
         if(position==1){
+            layoutL.setBackgroundResource(R.drawable.bg2);
             btn1.setVisibility(View.GONE);
             btn2.setVisibility(View.GONE);
             btnstart.setVisibility(View.VISIBLE);

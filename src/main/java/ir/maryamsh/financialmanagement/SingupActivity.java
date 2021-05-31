@@ -3,7 +3,10 @@ package ir.maryamsh.financialmanagement;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -22,6 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.tapadoo.alerter.Alerter;
 
+import java.util.Locale;
+
 public class SingupActivity extends AppCompatActivity {
     Button BtnSignup;
     FirebaseFirestore database;
@@ -30,6 +35,12 @@ public class SingupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Configuration overrideConfiguration = this.getResources().getConfiguration();
+        Locale locale = new Locale("fa_IR");
+        overrideConfiguration.setLocale(locale);
+        Context context  = createConfigurationContext(overrideConfiguration);
+        Resources resources = context.getResources();
+
         setContentView(R.layout.activity_singup);
         init();
         database=FirebaseFirestore.getInstance();
@@ -59,11 +70,12 @@ public class SingupActivity extends AppCompatActivity {
                                    ShowAlert("از روشن بودن فیلتر شکن مطمئن شوید (:");
                                 }
                                 else {
-                                    Toast.makeText(SingupActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
-                                }                            }
+                                    ShowAlert(task.getException().getLocalizedMessage());
+                                }
+                            }
                         }
                     });
+                    ShowAlert("لطفا کمی صبر کنید");
                 }
             }
         });
@@ -74,7 +86,7 @@ public class SingupActivity extends AppCompatActivity {
                 .setText(s)
                 .setIcon(R.drawable.ic_prof)
                 .setBackgroundColorRes(R.color.purple_700)
-                .setDuration(3000)
+                .setDuration(2000)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();
     }
@@ -94,5 +106,14 @@ public class SingupActivity extends AppCompatActivity {
        TXTName=findViewById(R.id.TXTName);
        TxtEmail=findViewById(R.id.TxtEmail);
        TxtPass=findViewById(R.id.TxtPass);
+    }
+    private void SetLanguage(){
+        String languageToLoad  = "fa";
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
     }
 }
