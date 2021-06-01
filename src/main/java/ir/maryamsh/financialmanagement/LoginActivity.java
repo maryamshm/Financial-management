@@ -32,11 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ini();
-        Locale locale = new Locale("fa");
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        this.getApplicationContext().getResources().updateConfiguration(config, null);
         shPref = getSharedPreferences("shPref", MODE_PRIVATE);
         auth=FirebaseAuth.getInstance();
         BtnLogin.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +70,8 @@ public class LoginActivity extends AppCompatActivity {
                 .setText(s)
                 .setIcon(R.drawable.ic_prof)
                 .setIconColorFilter(0)
+                .setTitleTypeface(Typeface.createFromAsset(getAssets(), "kalameh_regular.ttf"))
+                .setTextTypeface(Typeface.createFromAsset(getAssets(), "kalameh_regular.ttf"))
                 .setBackgroundColorRes(R.color.toastbg)
                 .setDuration(3000)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener

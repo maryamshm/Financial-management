@@ -33,9 +33,11 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:adjustViewBounds="true"
             android:layout_gravity="left"
+            android:tag="0"
             android:id="@+id/imgedit"
             android:src="@drawable/ic_edit" />
 
@@ -45,29 +47,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_32sdp"
             android:backgroundTint="@color/toastbg"
+            android:enabled="false"
             android:fontFamily="@font/kalameh_regular"
             android:hint="ایمیل"
-            android:inputType="number"
+            android:inputType="text"
             android:maxLines="1"
             android:padding="12dp"
             android:textColorHint="#5B5B5B"
             android:textDirection="rtl"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/txtName_"
+            android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_12sdp"
             android:backgroundTint="@color/toastbg"
             android:fontFamily="@font/kalameh_regular"
             android:hint="نام"
-            android:inputType="number"
+            android:inputType="text"
             android:maxLines="1"
             android:padding="12dp"
             android:textColorHint="#5B5B5B"
             android:textDirection="rtl"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/txtPass_"
@@ -77,12 +81,13 @@
             android:backgroundTint="@color/toastbg"
             android:fontFamily="@font/kalameh_regular"
             android:hint="پسورد"
-            android:inputType="number"
+            android:inputType="textPassword"
             android:maxLines="1"
+            android:enabled="false"
             android:padding="12dp"
             android:textColorHint="#5B5B5B"
             android:textDirection="rtl"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <ImageView

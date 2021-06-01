@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -36,7 +37,7 @@ public class MoreActivity extends AppCompatActivity {
     TextView Txtype,TxtDate;
     EditText TxtDes,TxtPrice;
     Bundle extras;
-    boolean ischange;
+    boolean ischange=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +105,8 @@ public class MoreActivity extends AppCompatActivity {
                 .setIconColorFilter(0)
                 .setBackgroundColorRes(c)
                 .setDuration(2000)
+                .setTitleTypeface(Typeface.createFromAsset(getAssets(), "kalameh_regular.ttf"))
+                .setTextTypeface(Typeface.createFromAsset(getAssets(), "kalameh_regular.ttf"))
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();
     }
@@ -115,29 +118,13 @@ public class MoreActivity extends AppCompatActivity {
         data.put("name", extras.getString("name"));
         data.put("type",extras.getString("type"));
         data.put("date",extras.getString("date"));
-//        rootRef.collection("transaction").document(extras.getString("id")).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//               ShowAlert("به روز رسانی شد",R.drawable.ic_list,R.color.green);
-//            }
-//
-//        });
-        rootRef.collection("transaction").document(extras.getString("id")).set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        rootRef.collection("transaction").document(extras.getString("id")).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onComplete(Task<Void> task) {
-                if(task.isSuccessful()){
-                    ShowAlert("به روز رسانی شد",R.drawable.ic_list,R.color.green);
-                }
-                else{
-                    if(task.getException().getLocalizedMessage().contains("403")){
-                        ShowAlert("از روشن بودن فیلتر شکن مطمئن شوید (:",R.drawable.ic_list,R.color.red);
-                    }
-                    else {
-                        ShowAlert(task.getException().getLocalizedMessage(),R.drawable.ic_list,R.color.red);
-                    }
-                }
+            public void onSuccess(Void aVoid) {
+               ShowAlert("به روز رسانی شد",R.drawable.ic_list,R.color.green);
             }
         });
+
     }
 
     private void DeleteData() {

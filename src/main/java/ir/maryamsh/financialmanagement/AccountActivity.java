@@ -35,7 +35,6 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(AccountActivity.this,SingupActivity.class));
                 finish();
-
             }
         });
         BtnLogin.setOnClickListener(new View.OnClickListener() {

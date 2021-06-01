@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -54,6 +55,7 @@ public class add_fragment extends Fragment {
     NewTransaction newTransaction;
     SharedPreferences shPref;
     TextView tvtdate;
+    Boolean ischange=false;
     public add_fragment(Context context){
         this.context=context;
     }
@@ -76,10 +78,12 @@ public class add_fragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                if (TxtDes.getText().toString().isEmpty() || TxtPrice.getText().toString().isEmpty()) {
-                     ShowAlert("لطفا اطلاعات را تکمیل کنید");
-                } else {
-                    InsertData();
+                if (ischange) {
+                    if (TxtDes.getText().toString().isEmpty() || TxtPrice.getText().toString().isEmpty()) {
+                        ShowAlert("لطفا اطلاعات را تکمیل کنید");
+                    } else {
+                        InsertData();
+                    }
                 }
             }
         });
@@ -99,8 +103,30 @@ public class add_fragment extends Fragment {
                 if (s.toString().length() == 1 && s.toString().startsWith("0")) {
                     s.clear();
                 }
+                else{
+                    ischange = true;
+                    AddDate.setBackgroundResource(R.drawable.button_style);
+                }
             }
         });
+        TxtDes.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                ischange = true;
+                AddDate.setBackgroundResource(R.drawable.button_style);
+            }
+        });
+
         return view;
     }
 
@@ -138,6 +164,8 @@ public class add_fragment extends Fragment {
                     ShowAlert("اطلاعات اضافه شد (:");
                     TxtDes.setText("");
                     TxtPrice.setText("");
+                    TextView tvtdate=view.findViewById(R.id.tvdate);
+                    tvtdate.setText("");
                 }
                 else{
                     ShowAlert(task.getException().getLocalizedMessage());
@@ -153,6 +181,8 @@ public class add_fragment extends Fragment {
                 .setBackgroundColorRes(R.color.toastbg)
                 .setDuration(2000)
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
+                .setTitleTypeface(Typeface.createFromAsset(context.getAssets(), "kalameh_regular.ttf"))
+                .setTextTypeface(Typeface.createFromAsset(context.getAssets(), "kalameh_regular.ttf"))
                 .show();
     }
 

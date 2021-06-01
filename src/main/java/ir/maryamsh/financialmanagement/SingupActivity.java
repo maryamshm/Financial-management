@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -27,6 +28,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.tapadoo.alerter.Alerter;
 
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SingupActivity extends AppCompatActivity {
     Button BtnSignup;
@@ -92,12 +95,23 @@ public class SingupActivity extends AppCompatActivity {
                 .setIcon(R.drawable.ic_prof)
                 .setBackgroundColorRes(R.color.toastbg)
                 .setDuration(2000)
+                .setTitleTypeface(Typeface.createFromAsset(getAssets(), "kalameh_regular.ttf"))
+                .setTextTypeface(Typeface.createFromAsset(getAssets(), "kalameh_regular.ttf"))
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();
     }
 
     private boolean validdata() {
-        if(TxtEmail.getText().toString().trim().isEmpty() || TxtPass.getText().toString().trim().isEmpty() || TXTName.getText().toString().trim().isEmpty()){
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(TxtEmail.getText().toString().trim());
+        if(!(matcher.matches())){
+            ShowAlert("ایمیل معتبر نیست");
+            return false;
+        }
+        else if(TxtEmail.getText().toString().trim().isEmpty() ||
+                TxtPass.getText().toString().trim().isEmpty()
+                || TXTName.getText().toString().trim().isEmpty()){
             ShowAlert("لطفا فیلد ها را کامل پر کنید");
             return false;
         }

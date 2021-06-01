@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -62,7 +63,7 @@ public class home_fragment extends Fragment {
     }
     private void setview() {
         SharedPreferences shPref = context.getSharedPreferences("shPref", MODE_PRIVATE);
-        String email=shPref.getString("email", "emial");
+        String email=shPref.getString("email", "email");
         imgempty=view.findViewById(R.id.imgempty);
         recyclerView=view.findViewById(R.id.recyclerhome);
         database=FirebaseFirestore.getInstance();
@@ -97,6 +98,8 @@ public class home_fragment extends Fragment {
                 .setIcon(R.drawable.ic_list)
                 .setBackgroundColorRes(R.color.toastbg)
                 .setDuration(1500)
+                .setTitleTypeface(Typeface.createFromAsset(context.getAssets(), "kalameh_regular.ttf"))
+                .setTextTypeface(Typeface.createFromAsset(context.getAssets(), "kalameh_regular.ttf"))
                 .enableSwipeToDismiss() //seems to not work well with OnClickListener
                 .show();
     }

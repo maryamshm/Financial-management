@@ -3,6 +3,8 @@ package ir.maryamsh.financialmanagement;
 public class Users {
     private String name,email,pass;
 
+    public Users (){}
+
     public Users(String name,String pass,String email){
         this.name=name;
         this.email=email;

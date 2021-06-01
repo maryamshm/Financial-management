@@ -43,7 +43,6 @@
             android:id="@+id/spinnertype"
             android:textDirection="rtl"
             android:layoutDirection="rtl"
-            android:textAlignment="center"
             android:tooltipText="دسته بندی"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_33sdp"
@@ -67,7 +66,7 @@
             android:textDirection="rtl"
             android:textSize="16sp" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="تاریخ"
@@ -86,12 +85,12 @@
         android:layout_alignBottom="@id/form"
         android:layout_centerHorizontal="true"
         android:id="@+id/add_data"
-        android:background="@drawable/button_style">
+        android:background="@drawable/disablebtn">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="اضافه کردن"
+            android:text="افزودن"
             android:textColor="#fff"
             android:textSize="16sp"
             android:fontFamily="@font/kalameh_bold"/>
