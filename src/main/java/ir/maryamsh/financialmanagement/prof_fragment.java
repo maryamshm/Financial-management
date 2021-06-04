@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.security.keystore.StrongBoxUnavailableException;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -35,6 +38,8 @@ import com.tapadoo.alerter.Alerter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -119,13 +124,13 @@ public class prof_fragment  extends Fragment {
                     ImgEdit.setTag("1");
                 }
                 else{
-                    ImgEdit.setImageResource(R.drawable.ic_edit);
-                    TxtName.setEnabled(false);
-                    TxtPass.setEnabled(false);
-                    TxtEmail.setEnabled(false);
-                    ImgEdit.setTag("0");
-                    UpdateData();
-                }
+                        UpdateData();
+                        ImgEdit.setImageResource(R.drawable.ic_edit);
+                        TxtName.setEnabled(false);
+                        TxtPass.setEnabled(false);
+                        TxtEmail.setEnabled(false);
+                        ImgEdit.setTag("0");
+                    }
             }
         });
 
@@ -134,7 +139,9 @@ public class prof_fragment  extends Fragment {
             public void onClick(View v) {
                 SharedPreferences settings = context.getSharedPreferences("shPref", MODE_PRIVATE);
                 settings.edit().clear().commit();
-                startActivity(new Intent(context,AccountActivity.class));
+                Intent intent = new Intent(context, AccountActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 ((Activity)context).finish();
             }
         });
@@ -145,32 +152,50 @@ public class prof_fragment  extends Fragment {
         TxtName.setText(CurName);
         TxtEmail.setText(CurEmail);
         TxtPass.setText(CurPass);
+        ischange=false;
     }
 
     private void UpdateData() {
-        if(ischange && validata()) {
-            FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-            Map<String, Object> data = new HashMap<>();
-            data.put("email", TxtEmail.getText().toString());
-            data.put("pass", TxtName.getText().toString());
-            data.put("name", TxtPass.getText().toString());
-            rootRef.collection("users").document(shPref.getString("curid", "email")).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    ShowAlert("به روز رسانی شد", R.drawable.ic_list, R.color.green);
-                    SharedPreferences.Editor editor = shPref.edit();
-                    editor.putString("email", TxtEmail.getText().toString().trim());
-                    editor.commit();
-                }
-            });
+            if (ischange && validata()){
+                FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+                Map<String, Object> data = new HashMap<>();
+                data.put("email", TxtEmail.getText().toString());
+                data.put("name", TxtName.getText().toString());
+                data.put("pass", TxtPass.getText().toString());
+                rootRef.collection("users").document(shPref.getString("curid", "email")).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        ShowAlert("به روز رسانی شد", R.drawable.ic_list, R.color.green);
+                        SharedPreferences.Editor editor = shPref.edit();
+                        editor.putString("email", TxtEmail.getText().toString().trim());
+                        editor.commit();
+                    }
+                });
+            }
         }
-    }
 
     private boolean validata() {
-        if(TxtEmail.getText().toString().trim().isEmpty() || TxtPass.getText().toString().trim().isEmpty()){
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(TxtEmail.getText().toString().trim());
+
+        final String PASS_PATTERN = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d$@$!%*#?&]{6,}$";
+        Pattern patternpass = Pattern.compile(PASS_PATTERN);
+        Matcher matcherpass = patternpass.matcher(TxtEmail.getText().toString().trim());
+
+        if(!(matcher.matches())){
+            ShowAlert("ایمیل معتبر نیست",R.drawable.ic_prof,R.color.red);
+            return false;
+        }
+        else if(!(matcherpass.matches())){
+            ShowAlert("رمز معتبر نیست",R.drawable.ic_prof,R.color.red);
+            return false;
+        }
+       else if(TxtEmail.getText().toString().trim().isEmpty() || TxtPass.getText().toString().trim().isEmpty() || TxtName.getText().toString().trim().isEmpty()){
             ShowAlert("لطفا فیلد ها را کامل پر کنید",R.drawable.ic_prof,R.color.red);
             return false;
         }
+
         else {
             return true;
         }
@@ -232,6 +257,5 @@ public class prof_fragment  extends Fragment {
                 .enableSwipeToDismiss()
                 .show();
     }
-
 }
 

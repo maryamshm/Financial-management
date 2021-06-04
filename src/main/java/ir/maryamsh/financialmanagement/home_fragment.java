@@ -27,6 +27,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -49,6 +51,7 @@ public class home_fragment extends Fragment {
     ImageView imgempty;
     RecyclerView recyclerView;
     FirebaseFirestore database;
+    ArrayList<String> users=new ArrayList<>();
     ArrayList<NewTransaction> transactionList=new ArrayList<>();
     public home_fragment(Context context){
         this.context=context;
@@ -61,6 +64,7 @@ public class home_fragment extends Fragment {
         ShowAlert();
         return view;
     }
+
     private void setview() {
         SharedPreferences shPref = context.getSharedPreferences("shPref", MODE_PRIVATE);
         String email=shPref.getString("email", "email");
@@ -122,4 +126,5 @@ public class home_fragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
 }

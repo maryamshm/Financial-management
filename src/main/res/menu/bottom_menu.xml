@@ -17,6 +17,6 @@
     <item
         android:id="@+id/prof_item"
         android:title="پروفایل"
-        android:icon="@drawable/ic_prof"/>
+        android:icon="@drawable/ic_profile_menu"/>
 
 </menu>

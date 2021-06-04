@@ -83,6 +83,7 @@ public class add_fragment extends Fragment {
                         ShowAlert("لطفا اطلاعات را تکمیل کنید");
                     } else {
                         InsertData();
+                        AddDate.setBackgroundResource(R.drawable.disablebtn);
                     }
                 }
             }

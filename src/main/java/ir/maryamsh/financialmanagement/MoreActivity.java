@@ -2,6 +2,7 @@ package ir.maryamsh.financialmanagement;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -128,10 +129,11 @@ public class MoreActivity extends AppCompatActivity {
     }
 
     private void DeleteData() {
-        ShowAlert("حذف شد",R.drawable.ic_delete,R.color.red);
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         rootRef.collection("transaction").document(extras.getString("id")).delete();
+        ActivityCompat.finishAffinity(this);
         startActivity(new Intent(MoreActivity.this,MainActivity.class));
+        MoreActivity.this.finish();
     }
     private void setvalue() {
         extras = getIntent().getExtras();
