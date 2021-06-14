@@ -2,18 +2,14 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/report_item"
-        android:title="گزارش"
-        android:icon="@drawable/ic_report"/>
+        android:id="@+id/add_item"
+        android:title="اضافه کردن"
+        android:icon="@drawable/ic_add"/>
     <item
         android:id="@+id/home_item"
         android:title="خانه"
         android:icon="@drawable/ic_home"
         />
-    <item
-        android:id="@+id/add_item"
-        android:title="اضافه کردن"
-        android:icon="@drawable/ic_add"/>
     <item
         android:id="@+id/prof_item"
         android:title="پروفایل"

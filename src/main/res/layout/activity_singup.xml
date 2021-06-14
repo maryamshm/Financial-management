@@ -9,11 +9,6 @@
     android:background="@drawable/sliderbg"
     android:layout_height="match_parent"
     tools:context=".SingupActivity">
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="86sp"
-        android:background="#fff"/>
 
     <LinearLayout
         android:layout_width="282dp"
