@@ -45,8 +45,8 @@ public class report_fragement  extends Fragment {
     public View onCreateView( LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.report_fragment,container,false);
         SharedPreferences shPref = context.getSharedPreferences("shPref", context.MODE_PRIVATE);
-        String co=shPref.getString("co", "12");
-        String earn=shPref.getString("earn", "12");
+        String co=shPref.getString("co", "0");
+        String earn=shPref.getString("earn", "0");
         pieChart=view.findViewById(R.id.piechart);
         ArrayList<PieEntry> pieEntries=new ArrayList<>();
         pieEntries.add(new PieEntry(Integer.parseInt(co),"هزینه"));

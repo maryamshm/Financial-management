@@ -61,10 +61,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeAdapterhol
             });
             if (newTransactions.get(position).getType().contains("1")) {
                 earn += Integer.parseInt(newTransactions.get(position).getPrice());
-                Log.i("tag", "daramad" + newTransactions);
             } else if(newTransactions.get(position).getType().contains("0")) {
                 co += Integer.parseInt(newTransactions.get(position).getPrice());
-                Log.i("tag", "hasineh" + co);
             }
             SharedPreferences.Editor editor = shPref.edit();
             editor.putString("co",String.valueOf(co));
