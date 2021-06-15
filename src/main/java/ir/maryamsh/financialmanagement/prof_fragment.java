@@ -117,9 +117,7 @@ public class prof_fragment  extends Fragment {
             public void onClick(View v) {
                 if (ImgEdit.getTag() == "0") {
                     TxtName.setEnabled(true);
-                    TxtPass.setEnabled(true);
-                    TxtEmail.setEnabled(true);
-                    ShowAlert("حالت ویرایش فعال شد (:",R.drawable.ic_edit,R.color.green);
+                    ShowAlert("حالت ویرایش نام فعال شد (:",R.drawable.ic_edit,R.color.green);
                     ImgEdit.setImageResource(R.drawable.ic_done);
                     ImgEdit.setTag("1");
                 }
@@ -185,10 +183,6 @@ public class prof_fragment  extends Fragment {
 
         if(!(matcher.matches())){
             ShowAlert("ایمیل معتبر نیست",R.drawable.ic_prof,R.color.red);
-            return false;
-        }
-        else if(!(matcherpass.matches())){
-            ShowAlert("رمز معتبر نیست",R.drawable.ic_prof,R.color.red);
             return false;
         }
        else if(TxtEmail.getText().toString().trim().isEmpty() || TxtPass.getText().toString().trim().isEmpty() || TxtName.getText().toString().trim().isEmpty()){

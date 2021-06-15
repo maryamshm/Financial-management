@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     case 2:
                         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new prof_fragment(MainActivity.this)).commit();
                         break;
-
+                    case 3:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new report_fragement(MainActivity.this)).commit();
+                        break;
                 }
                 return true;
             }

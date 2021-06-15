@@ -14,5 +14,8 @@
         android:id="@+id/prof_item"
         android:title="پروفایل"
         android:icon="@drawable/ic_profile_menu"/>
-
+    <item
+        android:id="@+id/repot_item"
+        android:title="گزارش"
+        android:icon="@drawable/ic_report"/>
 </menu>
